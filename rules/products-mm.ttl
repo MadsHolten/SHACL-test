@@ -1,0 +1,32 @@
+@prefix sh:     <http://www.w3.org/ns/shacl#> . 
+@prefix b4r:    <https://www.bim4ren.org/shapes#> .
+@prefix bot:    <https://w3id.org/bot#>.
+@prefix el:     <https://w3id.org/product/BuildingElements#> .
+@prefix props:  <https://w3id.org/props#> .
+
+b4r:DoorShape 
+    a sh:NodeShape ;
+    sh:targetClass el:Door ;
+    sh:property [
+        sh:path props:overallHeightIfcDoor_attribute_simple;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "A door must have an overall height"@en ,
+            "En dør skal have en overordnet højde"@da
+    ] , [
+        sh:path props:overallHeightIfcDoor_attribute_simple ;
+        sh:minInclusive 2000 ;
+        sh:message "A door must have an overall height of minimum 2000 mm"@en ,
+            "En dør skal have en overordnet højde på mindst 2000 mm"@da
+    ] , [
+        sh:path props:overallWidthIfcDoor_attribute_simple;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "A door must have an overall width"@en ,
+            "En dør skal have en overordnet bredde"@da
+    ] , [
+        sh:path props:overallWidthIfcDoor_attribute_simple ;
+        sh:minInclusive 900 ;
+        sh:message "A door must have an overall width of minimum 900 mm"@en ,
+            "En dør skal have en overordnet bredde på mindst 900 mm"@da
+    ] .

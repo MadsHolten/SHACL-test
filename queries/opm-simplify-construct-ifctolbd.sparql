@@ -1,0 +1,15 @@
+PREFIX opm:    <https://w3id.org/opm#>
+PREFIX prov:   <http://www.w3.org/ns/prov#>
+PREFIX schema: <http://schema.org/>
+PREFIX seas:   <https://w3id.org/seas/>
+
+CONSTRUCT{
+    ?foiURI ?prop ?value
+}
+WHERE{
+    ?foiURI ?prop ?propURI .
+    ?propURI seas:evaluation ?stateURI .
+    ?stateURI prov:generatedAtTime ?t ;
+        a opm:CurrentState ;
+        schema:value ?value .
+}

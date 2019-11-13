@@ -1,0 +1,7 @@
+PREFIX bot: <https://w3id.org/bot#>
+
+SELECT DISTINCT ?p
+WHERE{
+    ?s a bot:Space .
+    ?s ?p ?o
+}

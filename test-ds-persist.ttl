@@ -10,7 +10,6 @@ PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
     rdf:type                                fuseki:Service ;
     rdfs:label                              "Dataset with SHACL validation" ;
     fuseki:name                             "test-ds" ;
-    fuseki:serviceReadWriteGraphStore       "" ;
     fuseki:endpoint [ 
         fuseki:operation fuseki:query ; 
         fuseki:name "sparql"

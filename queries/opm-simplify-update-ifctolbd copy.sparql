@@ -1,0 +1,26 @@
+PREFIX opm:    <https://w3id.org/opm#>
+PREFIX prov:   <http://www.w3.org/ns/prov#>
+PREFIX schema: <http://schema.org/>
+PREFIX seas:   <https://w3id.org/seas/>
+
+DELETE{
+    ?foiURI ?prop ?propURI .
+    ?propURI seas:evaluation ?currentState , ?oldState .
+    ?currentState ?key ?val .
+    ?oldState ?key2 ?val2 .
+}
+INSERT{
+    ?foiURI ?prop ?currentValue
+}
+WHERE{
+    ?foiURI ?prop ?propURI .
+    ?propURI seas:evaluation ?currentState .
+    ?currentState a opm:CurrentState ;
+        ?key ?val ;
+        schema:value ?currentValue .
+    OPTIONAL{
+        ?propURI seas:evaluation ?oldState .
+        MINUS{?oldState a opm:CurrentState}
+        ?oldState ?key2 ?val2
+    }
+}
