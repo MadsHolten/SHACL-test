@@ -1,0 +1,35 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> . 
+@prefix b4r: <https://www.bim4ren.org/shapes#> .
+@prefix bot: <https://w3id.org/bot#>. 
+
+b4r:SiteShape 
+    a sh:NodeShape ;
+    sh:targetClass bot:Site ;
+    sh:property [
+        sh:path bot:hasBuilding;
+        sh:minCount 1 ;
+        sh:message "A Site must have at least one Building"
+    ] , [
+        sh:path bot:hasZeroPoint ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "A Site must have exactly one zero Point"
+    ] . 
+
+b4r:BuildingShape
+    a sh:NodeShape ;
+    sh:targetClass bot:Building ;
+    sh:property [
+        sh:path bot:hasStorey ;
+        sh:minCount 1 ;
+        sh:message "A Building must have at least one Storey"
+    ] . 
+
+b4r:StoreyShape 
+    a sh:NodeShape ;
+    sh:targetClass bot:Storey ;
+    sh:property [
+        sh:path bot:hasSpace ;
+        sh:minCount 1 ;
+        sh:message "A Storey must have at least one Space"
+    ] .

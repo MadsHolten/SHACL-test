@@ -1,0 +1,46 @@
+PREFIX :        <#>
+PREFIX fuseki:  <http://jena.apache.org/fuseki#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX tdb:     <http://jena.hpl.hp.com/2008/tdb#>
+PREFIX tdb2:  <http://jena.apache.org/2016/tdb#>
+PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
+
+<#service-test-ds>
+    rdf:type                                fuseki:Service ;
+    rdfs:label                              "Dataset with SHACL validation" ;
+    fuseki:name                             "test-ds" ;
+    fuseki:serviceReadWriteGraphStore       "" ;
+    fuseki:endpoint [ 
+        fuseki:operation fuseki:query ; 
+        fuseki:name "sparql"
+    ] ;
+    fuseki:endpoint [
+        fuseki:operation fuseki:query ; 
+        fuseki:name "query"
+    ] ;
+    fuseki:endpoint [
+        fuseki:operation fuseki:shacl ; 
+        fuseki:name "shacl" 
+    ] ;
+    fuseki:endpoint [
+        fuseki:operation fuseki:update ; 
+        fuseki:name "update" 
+    ] ;
+    fuseki:endpoint [
+        fuseki:operation fuseki:gsp-r ; 
+        fuseki:name "get" 
+    ] ;
+    fuseki:endpoint [
+        fuseki:operation fuseki:gsp-rw ; 
+        fuseki:name "data" 
+    ] ;
+    fuseki:endpoint [ 
+        fuseki:operation fuseki:upload ;
+        fuseki:name "upload"
+    ] ;
+    fuseki:dataset <#dataset-test-ds> .
+
+<#dataset-test-ds> 
+    rdf:type                                tdb2:DatasetTDB2 ;
+    tdb2:location                           "/fuseki/databases/test-ds" .

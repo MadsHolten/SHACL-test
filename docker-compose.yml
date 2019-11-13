@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  fuseki:
+    container_name: fuseki-shacl
+    restart: on-failure
+    build: ./jena-docker/jena-fuseki
+    # build: .
+    # build: ./docker-SemanticWebApps/apache-fuseki
+    ports:
+      - "3030:3030"
+    volumes:
+      - fuseki-data:/fuseki
+      - ./fuseki-staging:/staging
+      - ./shiro.ini:/fuseki/shiro.ini
+      - ./test-ds-in-mem.ttl:/fuseki/configuration/test-ds-in-mem.ttl
+      # - ./test-ds-persist.ttl:/fuseki/configuration/test-ds-persist.ttl
+  
+volumes:
+  fuseki-data:
