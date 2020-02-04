@@ -1,0 +1,23 @@
+@prefix sh:     <http://www.w3.org/ns/shacl#> . 
+@prefix b4r:    <https://www.bim4ren.org/shapes#> .
+@prefix bot:    <https://w3id.org/bot#>.
+@prefix el:     <https://w3id.org/product/BuildingElements#> .
+@prefix props:  <https://w3id.org/props#> .
+
+b4r:DoorShape 
+    a sh:NodeShape ;
+    sh:targetClass el:Door ;
+    sh:rule [
+		a sh:SPARQLRule ;
+        sh:prefixes props: ;
+        sh:construct """
+			CONSTRUCT {
+				$this props:overallAreaIfcDoor_attribute_simple ?area .
+			}
+			WHERE {
+				$this props:overallHeightIfcDoor_attribute_simple ?width .
+				$this props:overallWidthIfcDoor_attribute_simple ?height .
+				BIND (?width * ?height AS ?area) .
+			}
+			""" ;
+    ] .

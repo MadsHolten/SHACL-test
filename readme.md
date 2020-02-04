@@ -14,7 +14,7 @@ Kræver docker
 1. Klon dette projekt
 
 2. Kør kommando docker-compose up
-    - Starter en Fuseki version 3.13.1 med den konfiguration der ligger i mappen jena-docker (modificeret stain/docker)
+    - Starter en Fuseki version 3.14.0 med den konfiguration der ligger i mappen jena-docker (modificeret stain/docker)
     - Opretter et in-momory datasæt med den konfiguration der er defineret i `test-ds-in-mem.ttl`
 
 3. Send POST request til (http://localhost:3030/ds/upload)[http://localhost:3030/ds/upload] med ttl-filen (eksempelvis *Duplex.ttl*). Herunder er det vist hvordan det gøres i programmet [Postman](https://www.getpostman.com/)

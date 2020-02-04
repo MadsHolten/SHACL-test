@@ -1,7 +1,8 @@
 PREFIX bot: <https://w3id.org/bot#>
+PREFIX props: <https://w3id.org/props#>
 
-SELECT DISTINCT ?p
+SELECT DISTINCT ?class
 WHERE{
-    ?s a bot:Element .
-    ?s ?p ?o
+    ?door a ?class .
+    ?door props:overallHeightIfcDoor ?val
 }

@@ -1,6 +1,6 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> . 
 @prefix b4r: <https://www.bim4ren.org/shapes#> .
-@prefix bot: <https://w3id.org/bot#>. 
+@prefix bot: <https://w3id.org/bot#> . 
 
 b4r:SiteShape 
     a sh:NodeShape ;

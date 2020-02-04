@@ -1,0 +1,19 @@
+@prefix sh:     <http://www.w3.org/ns/shacl#> . 
+@prefix opm: 	<https://w3id.org/opm#> .
+@prefix prov:	<http://www.w3.org/ns/prov#> .
+@prefix schema: <http://schema.org/> .
+
+opm:PropertyStateShape
+    a sh:NodeShape ;
+    sh:targetClass opm:PropertyState ;
+    sh:property [
+        sh:path schema:value ;
+        sh:minCount 1 ;
+        sh:message "A property state must have a value"
+    ] , [
+        sh:path prov:generatedAtTime ;
+        sh:minCount 1 ;
+        sh:message "A property state must have a time stamp"
+    ] .
+
+# If it doesn't belong to class opm:CurrentPropertyState it must belong to opm:OutdatedPropertyState

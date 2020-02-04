@@ -1,0 +1,36 @@
+@prefix sh:     <http://www.w3.org/ns/shacl#> . 
+@prefix bim7aa: <http://bim7aa.dk/shapes#> .
+@prefix b7a:    <http://bim7aa.dk/ontology#> .
+@prefix bot:    <https://w3id.org/bot#>.
+@prefix el:     <https://w3id.org/product/BuildingElements#> .
+@prefix props:  <https://w3id.org/props#> .
+
+bim7aa:DoorShape
+    a sh:NodeShape ;
+    sh:rule [
+		a sh:TripleRule ;
+		sh:subject sh:this ;
+		sh:predicate rdf:type ;
+		sh:object b7a:311 ;
+		sh:condition ifc:IfcDoor ;
+		sh:condition [
+			sh:property [
+				sh:path ifc:isExternal ;
+				sh:equals true ;
+			] ;
+		] ;
+        sh:message "An instance of IFC door that has property isExternal equal to true is also a BIM7AA class 311"@en
+	] , [
+		a sh:TripleRule ;
+		sh:subject sh:this ;
+		sh:predicate rdf:type ;
+		sh:object b7a:321 ;
+		sh:condition ifc:IfcDoor ;
+		sh:condition [
+			sh:property [
+				sh:path ifc:isExternal ;
+				sh:equals false ;
+			] ;
+		] ;
+        sh:message "An instance of IFC door that has property isExternal equal to false is also a BIM7AA class 321"@en
+	]

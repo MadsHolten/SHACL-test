@@ -9,7 +9,6 @@ CONSTRUCT{
 WHERE{
     ?foiURI ?prop ?propURI .
     ?propURI seas:evaluation ?stateURI .
-    ?stateURI prov:generatedAtTime ?t ;
-        a opm:CurrentState ;
+    ?stateURI a opm:CurrentState ;
         schema:value ?value .
 }
